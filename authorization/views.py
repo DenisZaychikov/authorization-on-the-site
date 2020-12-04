@@ -4,15 +4,6 @@ from django.contrib import messages
 from .forms import NewForm
 
 
-def check(request):
-    if request.method == 'POST':
-        form = NewForm(request.POST)
-    else:
-        form = NewForm()
-
-    return render(request, 'check.html', {'form': form})
-
-
 def login(request):
     return render(request, 'login.html')
 
