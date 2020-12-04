@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Title</title>
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'registration' %}">Registration</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Login</a>
+      </li>
+    </ul>
+    <div class="col-md-9">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'error' %}
+                    <h1 style="color:red;">{{ message }}</h1>
+                {% else %}
+                    <h1 style="color:green;">{{ message }}</h1>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
